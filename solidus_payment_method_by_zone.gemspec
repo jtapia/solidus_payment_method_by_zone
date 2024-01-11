@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'lib/solidus_payment_method_by_zone/version'
+$:.push File.expand_path('lib', __dir__)
+require 'solidus_payment_method_by_zone/version'
 
 Gem::Specification.new do |s|
   s.name = 'solidus_payment_method_by_zone'
@@ -31,13 +32,11 @@ Gem::Specification.new do |s|
   s.executables = files.grep(%r{^exe/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  solidus_version = ['>= 2.6', '< 4']
+  solidus_version = ['>= 3.2', '< 5']
 
+  s.add_dependency 'deface'
   s.add_dependency 'solidus_core', solidus_version
   s.add_dependency 'solidus_support', '~> 0.5'
-  s.add_dependency 'deface', '~> 1.0'
 
-  s.add_development_dependency 'solidus_backend', solidus_version
-  s.add_development_dependency 'solidus_dev_support', '~> 2.5'
-  s.add_development_dependency 'solidus_frontend', solidus_version
+  s.add_development_dependency 'solidus_dev_support'
 end

@@ -1,7 +1,14 @@
+# frozen_string_literal: true
+
+require 'spree/core'
+require 'solidus_payment_method_by_zone'
+
 module SolidusPaymentMethodByZone
   class Engine < Rails::Engine
-    require 'spree/core'
-    isolate_namespace ::Spree
+    include SolidusSupport::EngineExtensions
+
+    isolate_namespace SolidusPaymentMethodByZone
+
     engine_name 'solidus_payment_method_by_zone'
 
     # use rspec for tests
