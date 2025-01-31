@@ -22,7 +22,8 @@ describe 'Payment methods admin page', type: :feature, js: true do
         check 'Mexico'
       end
       click_on('Create')
-      expect(page).to have_content("successfully created!")
+
+      expect(page).to have_content('successfully created!')
     end
   end
 end

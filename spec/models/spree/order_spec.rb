@@ -4,11 +4,30 @@ require 'spec_helper'
 
 describe Spree::Order, type: :model do
   let(:mx) { create(:country_mx) }
-  let(:usa) { Spree::Country.find_by(iso: 'US') }
+  let(:usa) do
+    Spree::Country.find_by(iso: 'US') ||
+      create(
+        :country,
+        name: 'United States of America',
+        iso: 'US'
+      )
+  end
   let(:us_zone) { create(:zone) }
   let(:mx_zone) { create(:zone) }
-  let!(:us_payment_method) { create(:check_payment_method, name: 'US method', zones: [us_zone]) }
-  let!(:mx_payment_method) { create(:check_payment_method, name: 'MX method', zones: [mx_zone]) }
+  let!(:us_payment_method) do
+    create(
+      :check_payment_method,
+      name: 'US method',
+      zones: [us_zone]
+    )
+  end
+  let!(:mx_payment_method) do
+    create(
+      :check_payment_method,
+      name: 'MX method',
+      zones: [mx_zone]
+    )
+  end
   let(:order) { create(:order_with_totals) }
 
   before(:each) do
