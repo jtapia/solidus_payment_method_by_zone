@@ -30,7 +30,7 @@ describe Spree::Order, type: :model do
   end
   let(:order) { create(:order_with_totals) }
 
-  before(:each) do
+  before do
     order.line_items << create(:line_item)
     us_zone.members.create(zoneable: usa)
     mx_zone.members.create(zoneable: mx)
