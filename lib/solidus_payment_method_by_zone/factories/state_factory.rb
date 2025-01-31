@@ -1,5 +1,5 @@
 # frozen_string_literal: true
- 
+
 FactoryBot.define do
   factory :state_ja, class: 'Spree::State' do
     transient do
